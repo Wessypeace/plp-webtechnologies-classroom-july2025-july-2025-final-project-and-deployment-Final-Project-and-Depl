@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GiggleGalaxy — Whispers in the Wind</title>
+    <meta
+      name="description"
+      content="Kid-friendly mini games, stories, and creative activities at GiggleGalaxy."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="site-header"></div>
+    <script src="header.js"></script>
+
+    <section class="hero">
+      <div class="slider" id="heroSlider" aria-roledescription="carousel">
+        <div
+          class="slide"
+          style="background: linear-gradient(120deg, #ff9a9e, #fad0c4)"
+          aria-hidden="false"
+        >
+          <div class="slide-caption">
+            <h3>Welcome to GiggleGalaxy</h3>
+            <p>Mini games and stories to spark imagination</p>
+          </div>
+        </div>
+
+        <div
+          class="slide"
+          style="background: linear-gradient(120deg, #a1c4fd, #c2e9fb)"
+          aria-hidden="true"
+        >
+          <div class="slide-caption">
+            <h3>Whispers & Tales</h3>
+            <p>Short stories that whisper secrets of the woods</p>
+          </div>
+        </div>
+
+        <div
+          class="slide"
+          style="background: linear-gradient(120deg, #f6d365, #fda085)"
+          aria-hidden="true"
+        >
+          <div class="slide-caption">
+            <h3>Explore & Create</h3>
+            <p>Draw, play, and learn — make something today</p>
+          </div>
+        </div>
+
+        <button class="slider-btn prev" aria-label="Previous slide">❮</button>
+        <button class="slider-btn next" aria-label="Next slide">❯</button>
+        <div class="slider-dots" id="sliderDots" aria-hidden="false"></div>
+      </div>
+    </section>
+
+    <!-- Hero content moved outside the carousel so it no longer overlays slides -->
+    <div class="hero-content">
+      <h2>Step into the Story</h2>
+      <p>A journey through whispers, memories, and forgotten paths.</p>
+      <a href="about.html" class="btn">Discover More</a>
+    </div>
+
+    <main id="main">
+      <section class="story">
+        <h2>Chapter One: The Forgotten Path</h2>
+        <p>
+          The wind carried secrets through the valley, whispering to those who
+          dared to listen. Elara stood at the edge of the forest, heart
+          pounding, as the ancient path revealed itself beneath the autumn
+          leaves...
+        </p>
+        <button onclick="showMore()">Read More</button>
+        <div id="moreText" style="display: none">
+          <p>
+            She stepped forward, each footfall echoing with memories not her
+            own. The trees leaned in, curious and silent, as if waiting for her
+            to remember what she had once promised.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="footer.js"></script>
+
+    <script src="main.js"></script>
+  </body>
+</html>

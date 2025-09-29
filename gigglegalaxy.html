@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GiggleGalaxy</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <script src="header.js"></script>
+
+    <main class="giggle-main">
+      <section class="card" id="miniGames">
+        <h2>Mini Games</h2>
+        <p>Try a quick math challenge or memory game.</p>
+        <div class="mini-game">
+          <div id="mathQuestion">
+            What is <span id="numA">3</span> + <span id="numB">4</span>?
+          </div>
+          <input id="mathAnswer" type="number" aria-label="math answer" />
+          <button id="checkMath">Check</button>
+          <p id="mathResult"></p>
+        </div>
+      </section>
+
+      <section class="card" id="storyCorner">
+        <h2>Story Corner</h2>
+        <p>Listen to a short story.</p>
+        <button id="playStory">Play Narration</button>
+        <audio id="storyAudio">
+          <source src="" />
+        </audio>
+      </section>
+
+      <section class="card" id="creativeZone">
+        <h2>Creative Zone</h2>
+        <p>Draw something fun!</p>
+        <canvas id="drawCanvas" width="400" height="250"></canvas>
+        <div class="canvas-controls">
+          <button id="clearCanvas">Clear</button>
+        </div>
+      </section>
+
+      <section class="card" id="funFacts">
+        <h2>Fun Facts</h2>
+        <p id="factText">Press the button for a fun fact.</p>
+        <button id="newFact">New Fact</button>
+      </section>
+
+      <section class="card" id="jokeStation">
+        <h2>Joke Station</h2>
+        <p id="jokeText">Ready for a giggle?</p>
+        <button id="tellJoke">Tell Me a Joke</button>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="footer.js"></script>
+
+    <script src="gigglegalaxy.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

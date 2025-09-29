@@ -1,0 +1,718 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comic Sans MS", "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Comic Sans MS", "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header and Navigation (polished) */
+header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(90deg, #ff6a88 0%, #ffcc70 100%);
+  color: white;
+  padding: 0.9rem 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(255, 106, 136, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+/* Brand block */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+.brand h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #fffbe7;
+  letter-spacing: 0.6px;
+}
+.brand .tag {
+  font-size: 0.85rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  opacity: 0.95;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-self: center;
+  background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+  padding: 0.25rem 0.45rem;
+  border-radius: 28px;
+  box-shadow: 0 2px 8px rgba(168, 237, 234, 0.16);
+}
+
+nav a {
+  color: #ff6a88;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 22px;
+  background: #fffbe7;
+  border: 2px solid transparent;
+  transition: background 220ms ease, color 220ms ease, transform 180ms ease;
+  font-size: 1.02rem;
+  display: inline-block;
+}
+
+nav a:hover,
+nav a:focus {
+  background: #ff6a88;
+  color: #fffbe7;
+  transform: translateY(-2px);
+}
+
+/* Active link styling (add .active server-side or via JS if desired) */
+nav a.active {
+  background: #ff6a88;
+  color: #fffbe7;
+  box-shadow: 0 6px 14px rgba(255, 106, 136, 0.14);
+}
+
+/* Responsive Navigation */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Main Content */
+main {
+  padding: 2em;
+  max-width: 900px;
+  margin: auto;
+  background: linear-gradient(120deg, #fcb69f 0%, #a1c4fd 100%);
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(252, 182, 159, 0.15);
+}
+
+/* Story Section */
+.story {
+  background: #fffbe7;
+  padding: 2em;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(255, 204, 112, 0.15);
+  border: 2px dashed #ff6a88;
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+  color: #ff6a88;
+  border: none;
+  padding: 0.9em 1.5em;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(168, 237, 234, 0.2);
+  transition: background 0.3s, color 0.3s;
+}
+
+button:hover {
+  background: #ff6a88;
+  color: #fffbe7;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(90deg, #ffcc70 0%, #a8edea 100%);
+  color: #ff6a88;
+  text-align: center;
+  padding: 1.2em;
+  margin-top: 2em;
+  font-size: 1.1em;
+  border-radius: 0 0 20px 20px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #ff6a88;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+.header-controls {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.audio-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.05rem;
+}
+
+.audio-toggle[aria-pressed="true"] {
+  background: #ff6a88;
+  color: white;
+}
+
+/* Mobile-friendly touch targets & focus styles */
+button,
+.btn,
+nav a {
+  min-height: 44px; /* recommended touch size */
+}
+
+nav a:focus,
+button:focus,
+.menu-toggle:focus {
+  outline: 3px solid rgba(255, 106, 136, 0.25);
+  outline-offset: 2px;
+}
+
+/* Toast notifications */
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  background: rgba(24, 40, 72, 0.95);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(24, 40, 72, 0.25);
+  font-weight: 600;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-6px);
+}
+
+@media (max-width: 768px) {
+  /* Animated mobile nav: keep it in the flow but collapsed using max-height
+     so we can transition open/close smoothly. */
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 220px;
+    padding: 0 0.9rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 2px 8px rgba(168, 237, 234, 0.2);
+    /* collapsed state */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: max-height 380ms cubic-bezier(0.2, 0.9, 0.2, 1),
+      opacity 260ms ease, transform 320ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  }
+
+  nav a {
+    display: block;
+    margin: 0.6em 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+
+  /* When nav has .active (toggled by JS), expand it */
+  nav.active {
+    max-height: 520px; /* large enough for several items */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered entrance for links when nav opens */
+  nav.active a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  nav.active a:nth-of-type(1) {
+    transition-delay: 60ms;
+  }
+  nav.active a:nth-of-type(2) {
+    transition-delay: 120ms;
+  }
+  nav.active a:nth-of-type(3) {
+    transition-delay: 180ms;
+  }
+  nav.active a:nth-of-type(4) {
+    transition-delay: 240ms;
+  }
+  nav.active a:nth-of-type(5) {
+    transition-delay: 300ms;
+  }
+
+  /* show the menu toggle on small screens */
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Respect reduced motion for the mobile nav animation */
+@media (prefers-reduced-motion: reduce) {
+  nav {
+    transition: none !important;
+    transform: none !important;
+  }
+  nav a {
+    transition: none !important;
+  }
+}
+
+/* Small-screen header adjustments */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  nav {
+    width: 100%;
+    margin-top: 6px;
+    padding: 0.5rem;
+    border-radius: 14px;
+  }
+
+  /* make the menu button float to the right inside header but visually smaller */
+  .menu-toggle {
+    position: relative;
+    right: 0;
+    top: 0;
+    font-size: 1.6rem;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 10px;
+    color: #ff6a88;
+    box-shadow: 0 4px 12px rgba(168, 237, 234, 0.12);
+  }
+
+  /* increase touch targets in mobile nav */
+  nav a {
+    padding: 0.9rem 1rem;
+    font-size: 1.05rem;
+  }
+}
+
+.hero {
+  position: relative;
+  border-radius: 0 0 40px 40px;
+  overflow: hidden;
+  height: 70vh;
+  display: flex;
+  /* keep slider full-bleed; the hero content was moved outside the
+    carousel so it doesn't overlay the slides */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fffbe7;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  /* bring the slider into its own stacking layer so we can ensure
+     captions/controls appear above the hero content */
+  z-index: 1;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.slide[aria-hidden="false"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slide-caption {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* start slightly lower and invisible so it can slide up/fade in */
+  transform: translate(-50%, -40%) translateY(12px) scale(0.98);
+  color: #fffbe7;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.18);
+  text-align: center;
+  padding: 0.6rem 1rem;
+  opacity: 0;
+  transition: opacity 420ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 420ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  will-change: opacity, transform;
+  /* ensure captions float above the hero-content */
+  z-index: 3;
+}
+.slide-caption h3 {
+  font-size: 2rem;
+  margin: 0 0 0.4rem 0;
+}
+.slide-caption p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* When the slide becomes active, animate the caption into place */
+.slide[aria-hidden="false"] .slide-caption {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0) scale(1);
+}
+
+/* When slide is hidden ensure caption is out of view (subtle slide/fade) */
+.slide[aria-hidden="true"] .slide-caption {
+  opacity: 0;
+  transform: translate(-50%, -40%) translateY(12px) scale(0.98);
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slide-caption,
+  .toast {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 0.6rem 0.9rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 4; /* keep the controls above hero content */
+}
+
+.slider-btn.prev {
+  left: 12px;
+}
+.slider-btn.next {
+  right: 12px;
+}
+
+.slider-dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 4; /* keep dots above hero content */
+}
+
+.slider-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.slider-dots button.active {
+  background: #ff6a88;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 204, 112, 0.3); /* playful overlay for readability */
+}
+
+.hero-content {
+  /* now placed below the carousel as a centered card */
+  position: relative;
+  z-index: 2;
+  margin: 1.75rem auto 2rem; /* sit fully below the carousel */
+  max-width: 900px;
+  width: calc(100% - 2rem);
+  background: rgba(255, 255, 255, 0.92);
+  color: #333;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(24, 40, 72, 0.08);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px) scale(0.995);
+  animation: heroCardIn 560ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+  will-change: opacity, transform;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+  color: #ff6a88;
+}
+
+.hero-content p {
+  font-size: 1.05rem;
+  margin-bottom: 0.85rem;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .hero-content {
+    margin: 1rem auto 1rem;
+    padding: 0.9rem 1rem;
+  }
+  .hero-content h2 {
+    font-size: 1.4rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+/* subtle slide-up + fade for the hero content card */
+@keyframes heroCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 0.5em;
+  color: #ff6a88;
+  text-shadow: 2px 2px 0 #fffbe7;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+  color: #ffcc70;
+}
+
+.btn {
+  background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+  color: #ff6a88;
+  padding: 0.9em 1.7em;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  box-shadow: 0 2px 8px rgba(168, 237, 234, 0.2);
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background: #ff6a88;
+  color: #fffbe7;
+}
+
+/* Footer enhancements */
+.site-footer {
+  background: linear-gradient(90deg, #ffcc70 0%, #a8edea 100%);
+  color: #ff6a88;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin: 2rem auto 0;
+  max-width: 1100px;
+}
+.site-footer .footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.site-footer .footer-links a {
+  color: #7a2a3a;
+  margin-right: 0.75rem;
+  text-decoration: underline;
+}
+.site-footer .footer-social a.social {
+  margin-left: 0.5rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.site-footer .footer-social a.social svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  display: inline-block;
+  color: #7a2a3a;
+}
+
+/* Hover/Focus states with brand colors and subtle lift */
+.site-footer .footer-social a.social {
+  transition: color 180ms ease, transform 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.site-footer .footer-social a.social:focus {
+  outline: 3px solid rgba(255, 106, 136, 0.18);
+  outline-offset: 4px;
+}
+.site-footer .footer-social a.social[aria-label="Twitter"]:hover,
+.site-footer .footer-social a.social[aria-label="Twitter"]:focus {
+  color: #1da1f2; /* Twitter blue */
+  transform: translateY(-3px);
+}
+.site-footer .footer-social a.social[aria-label="Instagram"]:hover,
+.site-footer .footer-social a.social[aria-label="Instagram"]:focus {
+  color: #e1306c; /* Instagram pink */
+  transform: translateY(-3px);
+}
+.site-footer .footer-social a.social[aria-label="YouTube"]:hover,
+.site-footer .footer-social a.social[aria-label="YouTube"]:focus {
+  color: #ff0000; /* YouTube red */
+  transform: translateY(-3px);
+}
+
+/* Slight scale on the svg icon itself for a nicer effect */
+.site-footer .footer-social a.social .icon {
+  transition: transform 180ms ease;
+}
+.site-footer .footer-social a.social:hover .icon,
+.site-footer .footer-social a.social:focus .icon {
+  transform: scale(1.08);
+}
+.site-footer .copyright {
+  margin-top: 0.6rem;
+  color: rgba(122, 42, 58, 0.9);
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .site-footer .footer-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+  .site-footer .footer-links {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* GiggleGalaxy styles */
+.giggle-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1.2rem;
+  padding: 2rem;
+}
+
+.card {
+  background: linear-gradient(180deg, #fffbe7 0%, #fff4e6 100%);
+  border: 3px solid #ffcc70;
+  border-radius: 18px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(255, 170, 187, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#drawCanvas {
+  border: 2px dashed #ff6a88;
+  background: #fff;
+  display: block;
+  margin: 0.5rem auto;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+}
+
+.canvas-controls {
+  margin-top: 0.5rem;
+}
+
+/* Form validation styles */
+.form-error {
+  color: #b00020;
+  background: rgba(176, 0, 32, 0.04);
+  padding: 0.4rem 0.6rem;
+  margin-top: 0.4rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+.input-error {
+  outline: 2px solid rgba(176, 0, 32, 0.15);
+  border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+  .giggle-main {
+    padding: 1rem;
+  }
+  .slide-caption h3 {
+    font-size: 1.4rem;
+  }
+  .slide-caption p {
+    font-size: 0.95rem;
+  }
+}
